@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Google Foo Bar Lvl 1</title>
+        <link rel="stylesheet" href="explanation.css">
+    </head>
+    <div id="nav-bar">
+        <header>Table of Contents</header>
+        <ul>
+          <a class="nav-link" rel="internal" href="#problem"><li>Problem</li></a>
+          <a class="nav-link" rel="internal" href="#tests"><li>Test Cases</li></a>
+          <a class="nav-link" rel="internal" href="#code"><li>Code</li></a>
+          <a class="nav-link" rel="internal" href="#explanation"><li>Explanation</li></a>
+        </ul>
+      </div>
+    
+    <body>
+      <h1 id="title">Google Foo Bar Level 1</h1>
+      
+      <div id="problem">
+        <h1>Problem</h1>
+        <p>Commander Lambda's minions are upset! They're given the worst jobs on the whole space station, and some of them are starting to complain that even those worst jobs are being allocated unfairly. If you can fix this problem, it'll prove your chops to Commander Lambda so you can get promoted!<br><br>
+    
+    Minion's tasks are assigned by putting their ID numbers into a list, one time for each day they'll work on that task. As shifts are planned well in advance, the lists for each task will contain up to 99 integers. When a minion is scheduled for the same task too many times, they'll complain about it until they're taken off the task completely. Some tasks are worse than others, so the number of scheduled assignments before a minion will refuse to do a task varies depending on the task. You figure you can speed things up by automating the removal of the minions who have been assigned a task too many times before they even get a chance to start complaining.<br><br>
+    
+    Write a function called answer(data, n) that takes in a list of less than 100 integers and a number n, and returns that same list but with all of the numbers that occur more than n times removed entirely. The returned list should retain the same ordering as the original list - you don't want to mix up those carefully planned shift rotations! For instance, if data was [5, 10, 15, 10, 7] and n was 1, answer(data, n) would return the list [5, 15, 7] because 10 occurs twice, and was thus removed from the list entirely.</p>
+      </div>
+      
+      <div id="tests">
+        <h1>Test Cases</h1>
+        <h4>Test Case 1</h4>
+        <p>Inputs:</p>
+        <code class="demo">
+          (int list) data = [1, 2, 3]<br>
+          (int) n = 0
+        </code>
+        <p>Output:</p>
+        <code class="demo">
+          (int list) []
+        </code>
+        <h4>Test Case 2</h4>
+        <p>Inputs:</p>
+        <code class="demo">
+          (int list) data = [1, 2, 2, 3, 3, 3, 4, 5, 5]<br>
+          (int) n = 1
+        </code>
+        <p>Output:</p>
+        <code class="demo">
+          (int list) [1, 4]
+        </code>
+        <h4>Test Case 3</h4>
+        <p>Inputs:</p>
+        <code class="demo">
+          (int list) data = [1, 2, 3]<br>
+          (int) n = 6
+        </code>
+        <p>Output:</p>
+        <code class="demo">
+          (int list) [1, 2, 3]
+        </code>
+      </div>
+      
+      <div id="code">
+        <h1>Code</h1>
+        <code class="demo">
+        def answer(data, n):
+          output = []
+    
+          for i in data:
+            count = 0
+          
+            for j in data:
+              if i == j:
+                count += 1
+          
+            if count <= n:
+              output.append(i)
+                           
+        return output
+    
+    print(answer(data, n))
+        </code>
+      </div>
+      
+        <div id="explanation">
+          <h1>Explanation</h1>
+          <p>I start off by defining a method that passes two parameters, <code>data</code> and <code>n</code>. These are the inputs given by the problem. Next, I want to find all the numbers in <code>data</code> such that they appear &le; <code>n</code> times. However, I first need to create a list to remember all of these numbers, so I initialized a list variable called <code>output</code>.<br><br>
+            The next step is to iterate through each value in <code>data</code>. In order to find the amount of duplicates for each number, I have to create a nested for loop that iterates through <code>data</code> again. I also created a variable named <code>count</code> to keep track of the number of duplicate numbers. <code>count</code> increases by 1 only if the value in the first iteration (<code>i</code>), matches the value in the second iteration (<code>j</code>).<br><br>
+            After running through the second iteration, I checked to see if <code>count</code> is &le; <code>n</code>, because this means that the number of duplicates for that specific value in <code>data</code> doesn't appear more than <code>n</code> times. If this is true, then it gets appended to the <code>output</code> list created before.<br><br>
+            Finally, after both for loops have run, I return <code>output</code>, which is the list of all numbers in <code>data</code> that appear &le; <code>n</code> times.
+          </p>
+        </div>  
+        
+    </body>
+</html>
